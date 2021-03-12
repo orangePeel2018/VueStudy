@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div">
+			<button-one></button-one>
+			<button-two></button-two>
+			<button @click="destory">销毁</button>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var hub=new Vue();
+			
+			Vue.component("button-one",{
+				data:function(){
+					return{
+						num:0
+					}
+				},
+				template:
+				`
+				<div>
+					<div>{{num}}</div>
+					<button @click="handle()">给兄弟元素加1</button>
+				</div>
+				`,
+				methods:{
+					handle:function(){
+						hub.$emit("bro-two",1);
+					}
+				},
+				mounted:function(){
+					hub.$on('bro-one',(val)=>{
+						this.num+=val;
+					})
+				}
+			});
+			Vue.component("button-two",{
+				data:function(){
+					return{
+						num:0
+					}
+				},
+				template:
+				`
+				<div>
+					<div>{{num}}</div>
+					<button @click="handle()">给兄弟元素加2</button>
+				</div>
+				`,
+				methods:{
+					handle:function(){
+						hub.$emit('bro-one',2);	
+					}
+				},
+				mounted:function(){
+					hub.$on('bro-two',(val)=>{
+						this.num+=val;
+					})
+				}
+			})
+			var vm =new Vue({
+				el:"#div",
+				data:{
+					
+				},
+				methods:{
+					destory:function(){
+						hub.$off('bro-one');
+						hub.$off('bro-two');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

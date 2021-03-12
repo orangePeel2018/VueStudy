@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		 <style type="text/css">
+		  form div {
+		    height: 40px;
+		    line-height: 40px;
+		  }
+		  form div:nth-child(4) {
+		    height: auto;
+		  }
+		  form div span:first-child {
+		    display: inline-block;
+		    width: 100px;
+		  }
+		  </style>
+	</head>
+	<body>
+		<div id="app">
+			<form action="">
+				<div>
+					<span>姓名:</span>
+					<span>
+						<input type="text" v-model="uname" />
+					</span>
+				</div>
+				<div>
+					<span>性别:</span>
+					<span>
+						<input type="radio" id="male" v-model="gender" value="1" />
+						<label for="male">男</label>
+						<input type="radio" id="female" v-model="gender" value="2" />
+						<label for="female">女</label>
+					</span>
+				</div>
+				<div>
+					<span>爱好:</span>
+					<span>
+						<input type="checkbox" id="run" value="1" v-model="hobby"/>
+						<label for="run">跑步</label>
+						<input type="checkbox" id="sing" value="2" v-model="hobby"/>
+						<label for="sing">唱歌</label>
+						<input type="checkbox" id="ball" value="3" v-model="hobby"/>
+						<label for="ball">球类</label>
+						<input type="checkbox" id="swim" value="4" v-model="hobby"/>
+						<label for="swim">游泳</label>
+					</span>
+				</div>
+				<div>
+					<span>职业</span>
+					<span>
+						<select v-model="occupation">
+							<option value="1">混子</option>
+							<option value="2">UI</option>
+							<option value="3">JAVA</option>
+							<option value="4">WEB</option>
+						</select>
+					</span>
+				</div>
+				<div>
+					<span>个人简介</span>
+					<span>
+						 <textarea v-model="desc"></textarea>
+					</span>
+				</div>
+				<div>
+				    <input type="submit" value="提交" @click.prevent="handle">
+				</div>
+			</form>
+			
+		</div>
+		
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					uname:"阿杰",
+					gender:2,
+					hobby:["1","2"],
+					occupation:1,
+					desc:"588阿杰带回家"
+				},
+				methods:{
+					handle:function(){
+						alert("提交成功");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

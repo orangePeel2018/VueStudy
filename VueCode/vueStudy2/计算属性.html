@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="lpp">
+			<div>{{reverseString}}</div>
+			<div>{{add}}</div>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#lpp",
+				data:{
+					msg:"msg",
+					num:0
+				},
+				computed:{
+					reverseString:function(){
+						return this.msg.split('').reverse().join('');
+					},
+					add:function(){
+						for(var i=0;i<100;i++){
+							this.num+=i;
+						}
+						return this.num;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

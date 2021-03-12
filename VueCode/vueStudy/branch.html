@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="branch">
+			<span v-if="flag">显不显示</span>
+			<div v-if="type=='A'">A</div>
+			<div v-else-if="type=='B'">B</div>
+			<div v-else-if="type=='c'">c</div>
+			<div v-show="type=='C'">C</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#branch",
+				data:{
+					flag:true,
+					type:"C"
+				}
+				
+			})
+		</script>
+	</body>
+</html>

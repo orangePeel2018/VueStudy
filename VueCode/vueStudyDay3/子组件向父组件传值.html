@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="sonToFather">
+			<div :style='{fontSize: fontSize + "px"}'>{{msg}}</div>
+			<button-msg :msg="msg" @enlarge-text="handle($event)"></button-msg>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.component("button-msg",{
+				props:['msg'],
+				template:
+				`<div>
+					<div>{{msg}}</div>
+					<button @click='$emit("enlarge-text")'>扩大字体不带参数</button>
+					<button @click='$emit("enlarge-text",20)'>扩大字体带参数</button>
+				</div>
+				`
+			})
+			
+			var vm=new Vue({
+				el:"#sonToFather",
+				data:{
+					msg:"扩大了没",
+					fontSize:5
+				},
+				methods:{
+					handle:function(val){
+						console.log(val);
+						if(val==undefined||val==''){
+							console.log("加大5");
+							this.fontSize +=5;
+						}else{
+							console.log("加大20");
+							this.fontSize+=val
+						}
+					}
+				}
+					
+			})
+		</script>
+	</body>
+</html>

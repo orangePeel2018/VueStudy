@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+		  /* 
+		    1、通过属性选择器 选择到 带有属性 v-cloak的标签  让他隐藏
+		 */
+		  *[v-cloak]{
+		    display: none;
+		  }
+		  </style>
+	</head>
+
+	<body>
+		<div  id="test">
+	<!-- 	让带有插值 语法的   添加 v-cloak 属性 
+			在 数据渲染完场之后，v-cloak 属性会被自动去除，
+			v-cloak一旦移除也就是没有这个属性了  属性选择器就选择不到该标签
+			也就是对应的标签会变为可见 -->
+			<span v-cloak>{{msg}}</span>
+			<div  v-cloak>{{1+2}}</div>
+			<div  v-cloak>{{msg+'-------'+123}}</div>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			/*
+			 Vue的基本使用步骤
+			 1、需要提供标签用于填充数据
+			 2、引入vue.js库文件
+			 3、可以使用vue的语法做功能了
+			 4、把vue提供的数据填充到标签里面
+			*/
+			var vm=new Vue({
+				 //  el   指定元素 id 是 app 的元素 
+				el:'#test',
+				 //  data  里面存储的是数据
+				data:{
+					msg:'helloWorld'
+				}
+			})
+			
+		</script>
+	</body>
+</html>

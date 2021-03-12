@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="lifeCycle">
+			<div v-text="msg"></div>
+			<button @click="change">改变</button>
+			<button @click="destory">销毁</button>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#lifeCycle",
+				data:{
+					msg:"丢你"
+				},
+				methods:{
+					change:function(){
+						this.msg="冲";
+					},
+					destory:function(){
+						this.$destroy();
+					}
+				},
+				beforeCreate:function(){
+					console.log("beforeCreate");
+				},
+				created:function(){
+					console.log("create");
+				},
+				beforeMount:function(){
+					console.log("beforeMount")
+				},
+				beforeMount: function(){
+					console.log('beforeMount');
+				},
+				mounted: function(){
+					console.log('mounted');
+				},
+				beforeUpdate: function(){
+					console.log('beforeUpdate');
+				},
+				updated: function(){
+					console.log('updated');
+				},
+				beforeDestroy: function(){
+					console.log('beforeDestroy');
+				},
+				destroyed: function(){
+					console.log('destroyed');
+				}
+			})
+		</script>
+	</body>
+</html>

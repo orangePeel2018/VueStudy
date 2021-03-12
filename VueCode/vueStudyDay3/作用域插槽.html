@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.current {
+			    color: orange;
+			  }
+		</style>
+	</head>
+	<body>
+		<div id="scopeSlot">
+			<test-slot :list="list">
+				<template slot-scope="slotProps">
+					<span class="current" v-if="slotProps.info.id==1">{{slotProps.info.name}}</span>
+					<span v-else>{{slotProps.info.name}}</span>
+				</template>
+			</test-slot>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			
+			Vue.component("test-slot",{
+				props:['list'],
+				template:
+				`
+				<div>
+					<ul></ul>
+					<li :key="item.id" v-for="item in list">
+						<slot :info="item">{{item.name}}</slot>
+					</li>
+				</div>
+				`
+			})
+			
+			var vm=new Vue({
+				el:"#scopeSlot",
+				data:{
+					list:[{
+						id:1,
+						name:"apple"
+					},{
+						id:2,
+						name:"banana"
+					},{
+						id:3,
+						name:"orange"
+					}]
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="dd">
+			<ul>
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+			<div>{{info.name}}</div>
+			<div>{{info.age}}</div>
+			<div>{{info.gender}}</div>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#dd",
+				data:{
+					list:['apple','banana','orange'],
+					info:{
+						name:"阿杰",
+						age:12
+					}
+				}
+			});
+			vm.$set(vm.info,'gender','female');
+			vm.$set(vm.list,3,"lemon");
+			Vue.set(vm.list,4,"hh");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="module">
+			<div>{{msg}}</div>
+			<my-component></my-component>
+			<my-component2></my-component2>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			Vue.component('my-component',{
+				data:function(){
+					return{
+						msg:"呵呵"
+					}
+				},
+				template:'<div><div>{{msg}}</div><div>{{msg}}</div></div>'
+			});
+			
+			Vue.component('my-component2',{
+				data:function(){
+					return{
+						msg:"嘻嘻"
+					}
+				},
+				template:
+				`
+				<div>
+					<div>{{msg}}</div>
+					<div>{{msg}}</div>
+				</div>
+				`
+			})
+			
+			
+			var vm=new Vue({
+				el:"#module",
+				data:{
+					msg:"哈哈"
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			 .box{
+					border:1px dashed #f0f;
+				}
+				.textColor{
+					color:#f00;
+					background-color:#eef;
+				}
+				.textSize{
+					font-size:30px;
+					font-weight:bold;
+				}
+		</style>
+	</head>
+	<body>
+		<div id="bind">
+			<!-- <img v-bind:src="link"/> -->
+			<img :src="link"/>
+			<button v-on:click="alert">苹果</button>
+			
+			<div v-bind:style="{color:activeColor,fontSize:activeSize}">哈哈哈哈</div>
+			<div v-bind:style="[acticeStyle]">hehehee</div>
+			<div class="box" v-bind:class="{textColor:isColor,textSize:isSize}">冲</div>
+			<div class="box" v-bind:class="[classA,classB]">冲</div>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#bind",
+				data:{
+					link:"img/orange.png",
+					activeColor:"red",
+					activeSize:"25px",
+					acticeStyle:{
+						color:"red",
+						fontSize:"25px"
+					},
+					isColor:true,
+					isSize:true,
+					classA:"textColor",
+					classB:"textSize"
+				},
+				methods:{
+					alert:function(){
+						this.link="img/apple.png"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="slot">
+			<test_slot>我是传值</test_slot>
+		</div>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			
+			Vue.component("test_slot",{
+				template:
+				`
+				<div>
+					<strong>提示:</strong>
+					<slot>我是默认值</slot>
+				</div>
+				`
+			})
+			
+			var vm=new Vue({
+				el:"#slot",
+				
+			})
+		</script>
+	</body>
+</html>

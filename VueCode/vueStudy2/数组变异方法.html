@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="ArrayVariationMethod">
+			<input type="text" v-model="fruitName"/>
+			<button @click="add">添加</button>
+			<button @click="deletes">删除</button>
+			<button @click="replace">替换</button>
+			<ul>
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#ArrayVariationMethod",
+				data:{
+					list:['apple','banana','organge'],
+					fruitName:""
+				},
+				methods:{
+					add:function(){
+						this.list.push(this.fruitName);
+						this.fruitName="";
+					},
+					deletes:function(){
+						this.list.pop();
+					},
+					replace:function(){
+						this.list=this.list.splice(0,2,this.fruitName);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
